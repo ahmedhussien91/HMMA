@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HMMA</string>
+    <string name="tab1">Tab1</string>
+    <string name="tab2">Tab2</string>
+    <string name="tab3">Tab3</string>
+    <string name="additem">AddItem</string>
+    <string name="backgroungimage">BackGroundItem</string>
+    <string name="item">Item</string>
+    <string name="category">Category</string>
+    <string name="date">Date</string>
+    <string name="price">Price</string>
+</resources>
