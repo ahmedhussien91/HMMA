@@ -10,31 +10,82 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="422dp">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="106dp">
 
-            app:tabMode="scrollable">
-
-            <com.google.android.material.tabs.TabItem
+            <Button
+                android:id="@+id/monthviewbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
-                android:text="@string/tab1" />
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:onClick="onclick_monthview"
+                android:text="@string/monthview"
+                app:backgroundTint="@color/purple_200"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/catbutton"
+                app:layout_constraintHorizontal_bias="0.416"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.tabs.TabItem
+            <Button
+                android:id="@+id/catbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab2" />
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
+                android:onClick="onclick_catview"
+                android:text="@string/categoryview"
+                app:backgroundTint="@color/purple_200"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/monthviewbutton"
+                app:layout_constraintTop_toTopOf="@+id/guideline"
+                app:layout_constraintVertical_bias="0.309" />
 
-            <com.google.android.material.tabs.TabItem
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab3" />
-        </com.google.android.material.tabs.TabLayout>
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="0dp" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                app:constraint_referenced_ids="catbutton"
+                tools:layout_editor_absoluteY="29dp" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                app:constraint_referenced_ids="monthviewbutton"
+                tools:layout_editor_absoluteY="29dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="left"
+                app:constraint_referenced_ids="guideline" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
@@ -44,8 +95,8 @@
             android:background="#DDDDDD"
             android:contentDescription="@string/item"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/item" />
+            android:hint="@string/item"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editTextDate"
@@ -54,6 +105,7 @@
             android:background="#DDDDDD"
             android:contentDescription="@string/date"
             android:ems="10"
+            android:hint="@string/date"
             android:importantForAutofill="no"
             android:inputType="date" />
 
@@ -65,6 +117,7 @@
             android:background="#DDDDDD"
             android:contentDescription="@string/price"
             android:ems="10"
+            android:hint="@string/price"
             android:inputType="number" />
 
         <EditText
@@ -73,8 +126,8 @@
             android:layout_height="77dp"
             android:background="#DDDDDD"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/category" />
+            android:hint="@string/category"
+            android:inputType="textPersonName" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

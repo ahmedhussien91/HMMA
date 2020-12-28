@@ -9,4 +9,8 @@
     <string name="category">Category</string>
     <string name="date">Date</string>
     <string name="price">Price</string>
+    <string name="categoryview">Categoryview</string>
+    <string name="monthview">monthView</string>
+    <string name="show">show</string>
+    <string name="back">back</string>
 </resources>

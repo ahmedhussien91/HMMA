@@ -2,13 +2,19 @@ package com.example.hmma;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TabHost;
+import android.widget.Button;
 
 import androidx.room.Room;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class,"item-database").build();
         new itemGetAsyncTask().execute();
+
+        Button monthViewButton = findViewById(R.id.monthviewbutton);
+        monthViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ItemsTableActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
 
 
@@ -67,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             item.category = categoryStr;
 
             // access DAO for database through asyncTask
+            items.add(item);
             new itemSaveAsyncTask(item).execute();
 
         }
@@ -74,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("fields are not filled");
         }
     }
+
+    public void onclick_catview(View view){
+        // change into another layout
+        System.out.println("catview");
+    }
+
+
+
 
     @Override
     protected void onDestroy() {
