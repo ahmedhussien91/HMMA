@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             counter++;
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
                 LocalDateTime now = LocalDateTime.now();
                 if (dateStr.contentEquals("")) {
                     dateStr = dtf.format(now);

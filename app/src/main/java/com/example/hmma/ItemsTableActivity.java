@@ -20,8 +20,6 @@ import java.util.List;
 
 public class ItemsTableActivity extends Activity {
 
-    static int head_flag = -1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +41,9 @@ public class ItemsTableActivity extends Activity {
         tv.removeAllViewsInLayout();
 
         List<Item> items = MainActivity.items;
+        int head_flag = -1;
 
-        for (int i = head_flag; i < (items.size() - 1); i++) {
+        for (int i = -1; i < items.size(); i++) {
 
             // this is a table row
             TableRow tr = new TableRow(ItemsTableActivity.this);
@@ -79,7 +78,6 @@ public class ItemsTableActivity extends Activity {
                 tv.addView(vline);
                 head_flag = 0;
             } else {
-
                 TextView h5 = new TextView(ItemsTableActivity.this);
                 h5.setText(items.get(i).ItemName + "\t\t");
                 h5.setTextSize(15);
