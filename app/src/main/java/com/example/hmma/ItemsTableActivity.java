@@ -2,11 +2,13 @@ package com.example.hmma;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,6 +19,8 @@ import androidx.room.Room;
 import org.json.JSONException;
 
 import java.util.List;
+
+import static com.example.hmma.MainActivity.db;
 
 public class ItemsTableActivity extends Activity {
 
@@ -52,6 +56,11 @@ public class ItemsTableActivity extends Activity {
 
             if (head_flag == -1) {
 
+                TextView h0 = new TextView(ItemsTableActivity.this);
+                h0.setText("iid \t");
+                h0.setTextSize(15);
+                tr.addView(h0);
+
                 TextView h1 = new TextView(ItemsTableActivity.this);
                 h1.setText("Item Name \t\t");
                 h1.setTextSize(15);
@@ -78,6 +87,12 @@ public class ItemsTableActivity extends Activity {
                 tv.addView(vline);
                 head_flag = 0;
             } else {
+
+                TextView h9 = new TextView(ItemsTableActivity.this);
+                h9.setText(items.get(i).iid + "\t");
+                h9.setTextSize(15);
+                tr.addView(h9);
+
                 TextView h5 = new TextView(ItemsTableActivity.this);
                 h5.setText(items.get(i).ItemName + "\t\t");
                 h5.setTextSize(15);
@@ -104,5 +119,46 @@ public class ItemsTableActivity extends Activity {
                 tv.addView(vline);
             }
         }
+    }
+
+    public void delete_onClick(View v){
+        EditText itemName = (EditText)findViewById(R.id.iid);
+        int iid = Integer.parseInt(itemName.getText().toString());
+        List<Item> items = MainActivity.items;
+
+        Item itemToBeDeleted = items.get(0);
+        itemToBeDeleted.iid = iid;
+        new itemDeleteAsyncTask(itemToBeDeleted, this).execute();
+
+    }
+
+    private static class itemDeleteAsyncTask extends AsyncTask<Void, Void, Integer> {
+
+        //Prevent leak
+        private Item item;
+        private Activity activity;
+
+        public itemDeleteAsyncTask(Item item_loc, Activity activity_loc) {
+            item = item_loc;
+            activity = activity_loc;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... params) {
+            UserDao userDao = db.userDao();
+            userDao.delete(item);
+            System.out.println("item " + (item.iid+1) + " deleted" );
+            return null;
+        }
+
+        protected void onPostExecute(Integer num)
+        {
+            // upate the table reload activity
+            reloadDatabase(activity);
+        }
+    }
+
+    private static void reloadDatabase(Activity activity) {
+        MainActivity.reloadDatabase(activity);
     }
 }

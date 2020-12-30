@@ -20,5 +20,5 @@ public interface UserDao {
     void insertAll(Item... items);
 
     @Delete
-    void delete(Item user);
+    void delete(Item item);
 }

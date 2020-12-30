@@ -2,6 +2,7 @@ package com.example.hmma;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.room.Room;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+import java.sql.Types;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -91,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public static void reloadDatabase(Activity activity){
+        new itemGetAsyncTask(activity).execute();
+    }
+
     public void onclick_catview(View view){
         // change into another layout
         System.out.println("catview");
@@ -131,6 +137,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static class itemGetAsyncTask extends AsyncTask<Void, Void, Integer> {
 
+        private Activity activity = null;
+        public itemGetAsyncTask(Activity activity_loc) {
+            activity = activity_loc;
+        }
         public itemGetAsyncTask() {
         }
 
@@ -140,6 +150,10 @@ public class MainActivity extends AppCompatActivity {
             items = userDao.getAll();
             if (items.size() > 0) {
                 counter = items.get(items.size() - 1).iid;
+            }
+            if (activity != null) {
+                activity.finish();
+                activity.startActivity(activity.getIntent());
             }
             return null;
         }

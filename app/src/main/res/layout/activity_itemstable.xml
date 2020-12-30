@@ -20,11 +20,11 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/show"
+        app:layout_constraintStart_toEndOf="@+id/delete"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/show"
+        android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,14 +33,15 @@
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
         android:layout_marginBottom="36dp"
-        android:text="@string/show"
+        android:onClick="delete_onClick"
+        android:text="delete"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toStartOf="@+id/backbutton"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3"
+        app:layout_constraintStart_toEndOf="@+id/iid"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/iid"
         android:layout_width="135dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -50,10 +51,10 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="38dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="iid"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toStartOf="@+id/show"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
