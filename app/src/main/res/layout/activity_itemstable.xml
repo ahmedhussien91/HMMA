@@ -75,19 +75,13 @@
 
             <TableLayout
                 android:id="@+id/tableLayout"
-                android:layout_width="419dp"
-                android:layout_height="621dp"
+                android:layout_width="395dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp">
-
-                <TableRow
-                    android:layout_width="402dp"
-                    android:layout_height="38dp"/>
-
-            </TableLayout>
+                android:layout_marginBottom="8dp"/>
         </LinearLayout>
     </ScrollView>
 
